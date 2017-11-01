@@ -1647,6 +1647,7 @@ md_test_insert_module(void **state)
  */
 
 static const char * const md_test_insert_module_2_mod1 = TEST_SOURCE_DIR "/yang/augm_by_incl_m1" TEST_MODULE_EXT;
+static const char * const md_test_insert_module_2_mod2 = TEST_SOURCE_DIR "/yang/augm_by_imp_m1" TEST_MODULE_EXT;
 
 static void
 md_test_insert_module_2(void **state)
@@ -1660,11 +1661,19 @@ md_test_insert_module_2(void **state)
     assert_int_equal(SR_ERR_OK, rc);
     validate_context(md_ctx);
 
+    //---------------------------------------------------------------------------------
     rc = md_insert_module(md_ctx, md_test_insert_module_2_mod1, &implicitly_inserted);
     assert_int_equal(SR_ERR_OK, rc);
     assert_int_equal(3, implicitly_inserted->count);
     md_free_module_key_list(implicitly_inserted);
     validate_context(md_ctx);
+    //---------------------------------------------------------------------------------
+    rc = md_insert_module(md_ctx, md_test_insert_module_2_mod2, &implicitly_inserted);
+    assert_int_equal(SR_ERR_OK, rc);
+    assert_int_equal(3, implicitly_inserted->count);
+    md_free_module_key_list(implicitly_inserted);
+    validate_context(md_ctx);
+    //---------------------------------------------------------------------------------
 
     rc = md_flush(md_ctx);
     assert_int_equal(SR_ERR_OK, rc);

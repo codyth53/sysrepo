@@ -1,0 +1,12 @@
+module augm_by_imp_m3 {
+  namespace "urn:fri:params:xml:ns:yang:augm_by_imp_m3";
+  prefix abi_m3;
+
+  import augm_by_imp_m4 {
+    prefix abi_m4;
+  }
+
+  include augm_by_imp_s1;
+  include augm_by_imp_s2;
+
+}

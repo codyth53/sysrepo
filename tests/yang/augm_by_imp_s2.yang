@@ -1,0 +1,18 @@
+submodule augm_by_imp_s2 {
+  belongs-to augm_by_imp_m3 {
+    prefix abi_m3;
+  }
+
+  augment "/abi_m3:cont1" {
+    container cont11 {
+    }
+  }
+
+  augment "/abi_m3:cont1/abi_m3:cont11" {
+    container cont111 {
+        leaf leaf111 {
+          type abi_m4:reftype;
+      }
+    }
+  }
+}
